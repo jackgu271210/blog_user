@@ -1,0 +1,24 @@
+.footer {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#1d2124;
+    height: 200px;
+    text-align: center;
+}
+.footer a {
+    color: #fff;
+}
+.section {
+    padding: 40px 0;
+}
+a {
+    color: inherit;
+}
+.btn {
+    margin: 28px 0;
+}
