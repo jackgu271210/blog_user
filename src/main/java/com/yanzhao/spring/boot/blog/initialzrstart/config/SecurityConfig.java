@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
      */
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()  //认证信息存储于内存中
-            .withUser("admin").password("123456").roles("ADMIN");
+        auth.inMemoryAuthentication().withUser("admin").password("123456").roles("ADMIN");
+        auth.inMemoryAuthentication().passwordEncoder(new MyPasswordEncoder()).withUser("yanzhao").password("yanzhao").roles("ADMIN");
     }
 }

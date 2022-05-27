@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,6 +24,21 @@
                             <a class="nav-link" th:href="@{~/users}">其他</a>
                         </li>
                     </ul>
+                    <!-- 登录判断 -->
+                    <div sec:authorize="isAuthenticated()" class="row">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <span class="nav-link" sec:authentication="name"></span>
+                            </li>
+                        </ul>
+                        <form action="/logout" th:action="@{/logout}" method="post">
+                            <input class="btn btn-outline-success" type="submit" value="退出">
+                        </form>
+                    </div>
+
+                    <div sec:authorize="isAnonymous()">
+                        <a class="btn btn-outline-success my-2 my-sm-0" type="submit" href="/login" th:href="@{~/login}">登录</a>
+                    </div>
                 </div>
             </div>
         </nav>
