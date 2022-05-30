@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>1</head>
+<div class="blog-masthead" th:fragment="common">
+    <nav class="navbar navbar-expand-lg navbar-dark blog-nav bg-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{~/users}">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{~/users}">其他</a>
+                    </li>
+                </ul>
+                <!-- 登录判断 -->
+                <div sec:authorize="isAuthenticated()" class="row">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <span class="nav-link" sec:authentication="name"></span>
+                        </li>
+                    </ul>
+                    <form action="/logout" th:action="@{/logout}" method="post">
+                        <input class="btn btn-outline-success" type="submit" value="退出">
+                    </form>
+                </div>
+
+                <div sec:authorize="isAnonymous()">
+                    <a class="btn btn-outline-success my-2 my-sm-0" type="submit" href="/login" th:href="@{~/login}">登录</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<body>
+</body>
+</html>
